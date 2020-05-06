@@ -1,7 +1,7 @@
 <!--
 Julia Evans
 5/13/2020
-Personal Information Page
+Profile Page
 -->
 
 <!DOCTYPE html>
@@ -55,31 +55,29 @@ Personal Information Page
 <!--Page content-->
 <div class="container mt-5">
 
-    <h1>Personal Information</h1>
+    <h1>Profile</h1>
     <hr>
 
     <div class="row">
 
-        <div class="col-md-8">
+        <div class="col-md-6">
 
             <form>
-                <!-- First name -->
+                <!-- Email -->
                 <div class="form-group">
-                    <label for="fname"><strong>First Name</strong></label>
-                    <input type="text" class="form-control" id="fname" placeholder="First name">
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="text" class="form-control" id="email" placeholder="my_email@gmail.com">
                 </div>
-                <!-- Last name -->
-                <div class="form-group">
-                    <label for="lname"><strong>Last Name</strong></label>
-                    <input type="text" class="form-control" id="lname" placeholder="Last name">
-                </div>
-                <!-- Age -->
-                <div class="form-group">
-                    <label for="age"><strong>Age</strong></label>
-                    <input type="text" class="form-control" id="age" placeholder="Age">
-                </div>
-                <!-- Gender -->
-                <label><strong>Gender</strong></label><br>
+                <!-- State -->
+                <label for="email"><strong>State</strong></label>
+                <select class="custom-select mb-3">
+                    <option selected>--Please Select--</option>
+                    <option value="1">Alabama</option>
+                    <option value="2">Alaska</option>
+                    <option value="3">Arizona</option>
+                </select>
+                <!-- Gender Interests -->
+                <label><strong>Seeking</strong></label><br>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="genderOptions" id="male" value="male">
                     <label class="form-check-label" for="male">Male</label>
@@ -88,21 +86,16 @@ Personal Information Page
                     <input class="form-check-input" type="radio" name="genderOptions" id="female" value="female">
                     <label class="form-check-label" for="female">Female</label>
                 </div>
-                <!-- Phone -->
-                <div class="form-group mt-3">
-                    <label for="phone"><strong>Phone Number</strong></label>
-                    <input type="text" class="form-control" id="phone" placeholder="000-000-0000">
-                </div>
             </form>
 
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-6">
 
-            <!-- Disclaimer message -->
-            <div class="bg-light border border-secondary rounded p-3 text-center">
-                <strong>Note:</strong> All information entered is protected by our <a href="">privacy policy</a>.
-                Profile information can only be viewed by others with your permission.
+            <!-- Bio -->
+            <div class="form-group">
+                <label for="bio"><strong>Biography</strong></label>
+                <textarea class="form-control" id="bio" rows="5"></textarea>
             </div>
 
         </div>
