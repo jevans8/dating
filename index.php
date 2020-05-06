@@ -10,6 +10,7 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
+require_once('model/data.php');
 
 //Instantiate the framework (Base class)
 $f3 = Base::instance(); //Class::method()
@@ -27,6 +28,16 @@ $f3->route('GET /', function(){
 //Personal information route
 $f3->route('GET /personal', function(){
 
+//    //if form has been submitted
+//    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+//
+//        //$_SESSION['condiments'] = $_POST['condiment'];
+//
+//        //redirect
+//        $f3->reroute('profile');
+//
+//    }
+
     $view = new Template();
     echo $view->render('views/personal.html');
 
@@ -34,7 +45,21 @@ $f3->route('GET /personal', function(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Profile page route
-$f3->route('GET /profile', function(){
+$f3->route('GET|POST /profile', function($f3){
+
+    $states = getStates();
+
+    $f3->set('states', $states); //put into f3 hive
+
+//    //if form has been submitted
+//    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+//
+//        //$_SESSION['condiments'] = $_POST['condiment'];
+//
+//        //redirect
+//        $f3->reroute('interests');
+//
+//    }
 
     $view = new Template();
     echo $view->render('views/profile.html');
@@ -43,7 +68,7 @@ $f3->route('GET /profile', function(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Interests page route
-$f3->route('GET /interests', function(){
+$f3->route('GET|POST /interests', function(){
 
     $view = new Template();
     echo $view->render('views/interests.html');
@@ -52,7 +77,7 @@ $f3->route('GET /interests', function(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Profile summary page route
-$f3->route('GET /summary', function(){
+$f3->route('GET|POST /summary', function(){
 
     $view = new Template();
     echo $view->render('views/summary.html');

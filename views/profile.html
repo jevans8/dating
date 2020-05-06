@@ -18,14 +18,14 @@ Profile Page
 <!--Page content-->
 <div class="container mt-5">
 
-    <h1>Profile</h1>
+    <h1>Create Profile</h1>
     <hr>
 
     <div class="row">
 
         <div class="col-md-6">
 
-            <form>
+            <form action="#" method="post">
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
@@ -34,10 +34,11 @@ Profile Page
                 <!-- State -->
                 <label for="email"><strong>State</strong></label>
                 <select class="custom-select mb-3">
-                    <option selected>--Please Select--</option>
-                    <option value="1">ALABAMA</option>
-                    <option value="2">ALASKA</option>
-                    <option value="3">ARIZONA</option>
+                    <option selected>-Please Select-</option>
+                    <repeat group="{{ @states }}" value="{{ @state }}">
+                        <option value="{{ @state }}">{{ strtoupper(@state) }}</option>
+                    </repeat>
+
                 </select>
                 <!-- Gender Interests -->
                 <label><strong>Seeking</strong></label><br>
@@ -67,8 +68,7 @@ Profile Page
 
     <!-- Next button -->
     <div class="text-right">
-        <button type="button" class="btn btn-primary">Next ></button>
-        <a href="interests">Next ></a>
+        <a class="btn btn-primary" href="interests" role="button">Next ></a>
     </div>
 
 </div>
