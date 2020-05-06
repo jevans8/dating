@@ -55,36 +55,61 @@ Home page (default route)
 <!--Page content-->
 <div class="container mt-5">
 
+    <h1>Personal Information</h1>
+    <hr>
+
     <div class="row">
 
-        <div class="col-md-6">
-            <h1>Chasing Tail &#128062;</h1>
-            <p class="lead">
-                Welcome to the web's most successful dog dating website. At Chasing Tail, your dog will meet another
-                like-minded dog. We have the highest success rate of dog couples on the web. User's are matched by
-                interest and location. Find out why so many others have found love on our site!
-            </p>
+        <div class="col-md-8">
 
-            <!--Testimonials-->
-            <h3>Hear what our users are saying about us</h3>
-            <hr>
-            <div class="px-5 font-weight-light font-italic">
-                <p>"I met the love of my life after only a month!"<br>-Rover</p>
-                <p>"It was so easy to set up and profile and start meeting people. I didn't realize how many others were looking for love in my area."<br>-Fluffy</p>
-                <p>"Just try it! You'll never be the same!"<br>-Nico</p>
+            <form>
+                <!-- First name -->
+                <div class="form-group">
+                    <label for="fname"><strong>First Name</strong></label>
+                    <input type="text" class="form-control" id="fname" placeholder="First name">
+                </div>
+                <!-- Last name -->
+                <div class="form-group">
+                    <label for="lname"><strong>Last Name</strong></label>
+                    <input type="text" class="form-control" id="lname" placeholder="Last name">
+                </div>
+                <!-- Age -->
+                <div class="form-group">
+                    <label for="age"><strong>Age</strong></label>
+                    <input type="text" class="form-control" id="age" placeholder="Age">
+                </div>
+                <!-- Gender -->
+                <label><strong>Gender</strong></label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderOptions" id="male" value="male">
+                    <label class="form-check-label" for="male">Male</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="genderOptions" id="female" value="female">
+                    <label class="form-check-label" for="female">Female</label>
+                </div>
+                <!-- Phone -->
+                <div class="form-group mt-3">
+                    <label for="phone"><strong>Phone Number</strong></label>
+                    <input type="text" class="form-control" id="phone" placeholder="000-000-0000">
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="bg-light border border-secondary rounded p-3 text-center">
+                <strong>Note:</strong> All information entered is protected by our <a href="">privacy policy</a>.
+                Profile information can only be viewed by others with your permission.
             </div>
-            <hr>
 
-            <!--Button-->
-            <button type="button" class="btn btn-primary btn-block btn-lg">
-                Create a Pup Profile!
-            </button>
         </div>
 
-        <div class="col-md-6">
-            <img class="img-fluid rounded my-3" src="/328/dating/images/dogs.jpg" alt="2 dogs in love">
-        </div>
+    </div>
 
+    <div class="text-right">
+        <button type="button" class="btn btn-primary">Next ></button>
     </div>
 
 </div>
