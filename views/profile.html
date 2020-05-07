@@ -1,8 +1,8 @@
 <!--
-Julia Evans
-5/13/2020
-Profile Page
--->
+   Julia Evans
+   5/13/2020
+   Profile Page
+   -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,20 +12,18 @@ Profile Page
 </head>
 
 <body>
+
 <!--Nav bar-->
 <include href="includes/nav.html"></include>
 
 <!--Page content-->
 <div class="container mt-5">
-
-    <h1>Create Profile</h1>
+    <h1>Profile</h1>
     <hr>
 
-    <div class="row">
-
-        <div class="col-md-6">
-
-            <form action="#" method="post">
+    <form action="#" method="POST">
+        <div class="row">
+            <div class="col-md-6">
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
@@ -38,7 +36,6 @@ Profile Page
                     <repeat group="{{ @states }}" value="{{ @state }}">
                         <option value="{{ @state }}">{{ strtoupper(@state) }}</option>
                     </repeat>
-
                 </select>
                 <!-- Gender Interests -->
                 <label><strong>Seeking</strong></label><br>
@@ -50,27 +47,25 @@ Profile Page
                     <input class="form-check-input" type="radio" name="genderOptions" id="female" value="female">
                     <label class="form-check-label" for="female">Female</label>
                 </div>
-            </form>
-
-        </div>
-
-        <div class="col-md-6">
-
-            <!-- Bio -->
-            <div class="form-group">
-                <label for="bio"><strong>Biography</strong></label>
-                <textarea class="form-control" id="bio" rows="5"></textarea>
             </div>
-
+            <div class="col-md-6">
+                <!-- Bio -->
+                <div class="form-group">
+                    <label for="bio"><strong>Biography</strong></label>
+                    <textarea class="form-control" id="bio" rows="5"></textarea>
+                </div>
+            </div>
         </div>
-
-    </div>
-
-    <!-- Next button -->
-    <div class="text-right">
-        <a class="btn btn-primary" href="interests" role="button">Next ></a>
-    </div>
-
+        <!-- Next button -->
+        <div class="row">
+            <div class="col-12">
+                <div class="text-right">
+                    <!--                    <a class="btn btn-primary" href="interests" role="button">Next ></a>-->
+                    <button type="submit" class="btn btn-primary">Next ></button>
+                </div>
+            </div>
+        </div>
+    </form>
 </div>
 
 </body>

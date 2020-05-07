@@ -8,6 +8,9 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
+//Start a session
+session_start();
+
 //Require the autoload file
 require_once('vendor/autoload.php');
 require_once('model/data.php');
@@ -26,17 +29,22 @@ $f3->route('GET /', function(){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Personal information route
-$f3->route('GET /personal', function(){
+$f3->route('GET|POST /personal', function($f3){
 
-//    //if form has been submitted
-//    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
-//        //$_SESSION['condiments'] = $_POST['condiment'];
-//
-//        //redirect
-//        $f3->reroute('profile');
-//
-//    }
+    echo $_SERVER['REQUEST_METHOD'];
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+
+    //if form has been submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //$_SESSION['condiments'] = $_POST['condiment'];
+
+        //redirect
+        $f3->reroute('profile');
+
+    }
 
     $view = new Template();
     echo $view->render('views/personal.html');
@@ -47,19 +55,23 @@ $f3->route('GET /personal', function(){
 //Profile page route
 $f3->route('GET|POST /profile', function($f3){
 
-    $states = getStates();
+    echo $_SERVER['REQUEST_METHOD'];
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
 
+    $states = getStates();
     $f3->set('states', $states); //put into f3 hive
 
-//    //if form has been submitted
-//    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-//
-//        //$_SESSION['condiments'] = $_POST['condiment'];
-//
-//        //redirect
-//        $f3->reroute('interests');
-//
-//    }
+    //if form has been submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //$_SESSION['condiments'] = $_POST['condiment'];
+
+        //redirect
+        $f3->reroute('interests');
+
+    }
 
     $view = new Template();
     echo $view->render('views/profile.html');
@@ -68,7 +80,28 @@ $f3->route('GET|POST /profile', function($f3){
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Interests page route
-$f3->route('GET|POST /interests', function(){
+$f3->route('GET|POST /interests', function($f3){
+
+    echo $_SERVER['REQUEST_METHOD'];
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+
+    $indoorInterests = getIndoor();
+    $f3->set('indoorInterests', $indoorInterests); //put into f3 hive
+
+    $outdoorInterests = getOutdoor();
+    $f3->set('outdoorInterests', $outdoorInterests); //put into f3 hive
+
+    //if form has been submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //$_SESSION['condiments'] = $_POST['condiment'];
+
+        //redirect
+        $f3->reroute('summary');
+
+    }
 
     $view = new Template();
     echo $view->render('views/interests.html');
@@ -79,8 +112,25 @@ $f3->route('GET|POST /interests', function(){
 //Profile summary page route
 $f3->route('GET|POST /summary', function(){
 
+    echo $_SERVER['REQUEST_METHOD'];
+    echo "<pre>";
+    var_dump($_POST);
+    echo "</pre>";
+
+    //if form has been submitted
+    if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        //$_SESSION['condiments'] = $_POST['condiment'];
+
+        //redirect
+        //$f3->reroute('profile');
+
+    }
+
     $view = new Template();
     echo $view->render('views/summary.html');
+
+    session_destroy();
 
 });
 

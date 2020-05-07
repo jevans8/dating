@@ -11,3 +11,15 @@ function getStates()
         "Wisconsin", "Wyoming");
     return $states;
 }
+
+function getIndoor()
+{
+    $indoor = array("tv", "puzzles", "movies", "reading", "cooking", "playing cards", "board games", "video games");
+    return $indoor;
+}
+
+function getOutdoor()
+{
+    $outdoor = array("hiking", "walking", "biking", "climbing", "swimming", "collecting");
+    return $outdoor;
+}

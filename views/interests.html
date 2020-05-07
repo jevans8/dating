@@ -1,8 +1,8 @@
 <!--
-Julia Evans
-5/13/2020
-Interests Page
--->
+   Julia Evans
+   5/13/2020
+   Interests Page
+   -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,140 +12,57 @@ Interests Page
 </head>
 
 <body>
+
 <!--Nav bar-->
 <include href="includes/nav.html"></include>
 
 <!--Page content-->
 <div class="container mt-5">
-
     <h1>Interests</h1>
     <hr>
 
-    <!-- Indoor Interests -->
-    <label><strong>Indoor Interests</strong></label>
-    <div class="row mb-3 px-3">
+    <form action="#" method="POST">
 
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="tv">
-                <label class="form-check-label" for="tv">
-                    TV
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="puzzles">
-                <label class="form-check-label" for="puzzles">
-                    Puzzles
-                </label>
-            </div>
+        <!-- Indoor Interests -->
+        <label><strong>Indoor Interests</strong></label>
+        <div class="row mb-3 px-3">
+            <repeat group="{{ @indoorInterests }}" value="{{ @interest }}">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="{{ @interest }}">
+                        <label class="form-check-label" for="{{ @interest }}">
+                            {{ @interest }}
+                        </label>
+                    </div>
+                </div>
+            </repeat>
         </div>
 
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="movies">
-                <label class="form-check-label" for="movies">
-                    Movies
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="reading">
-                <label class="form-check-label" for="reading">
-                    Reading
-                </label>
-            </div>
+        <!-- Outdoor Interests -->
+        <label><strong>Outdoor Interests</strong></label>
+        <div class="row px-3">
+            <repeat group="{{ @outdoorInterests }}" value="{{ @interest }}">
+                <div class="col-md-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="{{ @interest }}">
+                        <label class="form-check-label" for="{{ @interest }}">
+                            {{ @interest }}
+                        </label>
+                    </div>
+                </div>
+            </repeat>
         </div>
 
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="cooking">
-                <label class="form-check-label" for="cooking">
-                    Cooking
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="cards">
-                <label class="form-check-label" for="cards">
-                    Playing Cards
-                </label>
+        <!-- Next button -->
+        <div class="row">
+            <div class="col-12">
+                <div class="text-right">
+                    <!--                    <a class="btn btn-primary" href="summary" role="button">Next ></a>-->
+                    <button type="submit" class="btn btn-primary">Next ></button>
+                </div>
             </div>
         </div>
-
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="bgames">
-                <label class="form-check-label" for="bgames">
-                    Board Games
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="vgames">
-                <label class="form-check-label" for="vgames">
-                    Video Games
-                </label>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Outdoor Interests -->
-    <label><strong>Outdoor Interests</strong></label>
-    <div class="row px-3">
-
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="hiking">
-                <label class="form-check-label" for="hiking">
-                    Hiking
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="walking">
-                <label class="form-check-label" for="walking">
-                    Walking
-                </label>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="biking">
-                <label class="form-check-label" for="biking">
-                    Biking
-                </label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="climbing">
-                <label class="form-check-label" for="climbing">
-                    Climbing
-                </label>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="swimming">
-                <label class="form-check-label" for="swimming">
-                    Swimming
-                </label>
-            </div>
-        </div>
-
-        <div class="col-md-3">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="collecting">
-                <label class="form-check-label" for="collecting">
-                    Collecting
-                </label>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Next button -->
-    <div class="text-right">
-        <a class="btn btn-primary" href="summary" role="button">Next ></a>
-    </div>
-
+    </form>
 </div>
 
 </body>
