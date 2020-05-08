@@ -18,23 +18,23 @@ Profile Summary Page
 <!--Page content-->
 <div class="container mt-5">
 
-    <h1>Profile Summary</h1>
-    <hr>
+<!--    <h1>Profile Summary</h1>-->
+<!--    <hr>-->
 
-    <div class="row px-5 mx-5">
+    <div class="row px-md-5 mx-md-5">
 
         <div class="col-md-6">
 
             <!-- Summary List -->
             <ul class="list-group">
-                <li class="list-group-item">Name: </li>
-                <li class="list-group-item">Gender: </li>
-                <li class="list-group-item">Age: </li>
-                <li class="list-group-item">Phone: </li>
-                <li class="list-group-item">Email: </li>
-                <li class="list-group-item">State: </li>
-                <li class="list-group-item">Seeking: </li>
-                <li class="list-group-item">Interests: </li>
+                <li class="list-group-item">Name: {{ @SESSION.fname }} {{ @SESSION.lname }}</li>
+                <li class="list-group-item">Gender: {{ ucfirst(@SESSION.gender) }}</li>
+                <li class="list-group-item">Age: {{ @SESSION.age }}</li>
+                <li class="list-group-item">Phone: {{ @SESSION.phone }}</li>
+                <li class="list-group-item">Email: {{ @SESSION.email }}</li>
+                <li class="list-group-item">State: {{ strtoupper(@SESSION.state) }}</li>
+                <li class="list-group-item">Seeking: {{ ucfirst(@SESSION.seeking) }}</li>
+                <li class="list-group-item">Interests: {{ implode(@SESSION.indoor, " ") }} {{ implode(@SESSION.outdoor, " ") }}</li>
             </ul>
 
         </div>
@@ -42,13 +42,13 @@ Profile Summary Page
         <div class="col-md-6">
 
             <!-- Image -->
-            <div class="text-center">
+            <div class="text-center m-3">
                 <img class="img-fluid " src="/328/dating/images/profile.png" alt="profile">
             </div>
 
             <!-- Bio -->
             <p class="lead">Biography</p>
-            <p class="text-center">asldkfjlasdkjf lsajkdfklsjdf slkdfjklsjdf</p>
+            <p class="text-center">{{ @SESSION.bio }}</p>
 
         </div>
 

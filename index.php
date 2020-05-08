@@ -31,15 +31,14 @@ $f3->route('GET /', function(){
 //Personal information route
 $f3->route('GET|POST /personal', function($f3){
 
-    echo $_SERVER['REQUEST_METHOD'];
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //$_SESSION['condiments'] = $_POST['condiment'];
+        $_SESSION['fname'] = $_POST['fname'];
+        $_SESSION['lname'] = $_POST['lname'];
+        $_SESSION['age'] = $_POST['age'];
+        $_SESSION['gender'] = $_POST['gender'];
+        $_SESSION['phone'] = $_POST['phone'];
 
         //redirect
         $f3->reroute('profile');
@@ -55,18 +54,16 @@ $f3->route('GET|POST /personal', function($f3){
 //Profile page route
 $f3->route('GET|POST /profile', function($f3){
 
-    echo $_SERVER['REQUEST_METHOD'];
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     $states = getStates();
     $f3->set('states', $states); //put into f3 hive
 
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //$_SESSION['condiments'] = $_POST['condiment'];
+        $_SESSION['email'] = $_POST['email'];
+        $_SESSION['state'] = $_POST['state'];
+        $_SESSION['seeking'] = $_POST['genderSeeking'];
+        $_SESSION['bio'] = $_POST['bio'];
 
         //redirect
         $f3->reroute('interests');
@@ -82,11 +79,6 @@ $f3->route('GET|POST /profile', function($f3){
 //Interests page route
 $f3->route('GET|POST /interests', function($f3){
 
-    echo $_SERVER['REQUEST_METHOD'];
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
     $indoorInterests = getIndoor();
     $f3->set('indoorInterests', $indoorInterests); //put into f3 hive
 
@@ -96,7 +88,8 @@ $f3->route('GET|POST /interests', function($f3){
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        //$_SESSION['condiments'] = $_POST['condiment'];
+        $_SESSION['indoor'] = $_POST['indoorInterests'];
+        $_SESSION['outdoor'] = $_POST['outdoorInterests'];
 
         //redirect
         $f3->reroute('summary');
@@ -112,24 +105,11 @@ $f3->route('GET|POST /interests', function($f3){
 //Profile summary page route
 $f3->route('GET|POST /summary', function(){
 
-    echo $_SERVER['REQUEST_METHOD'];
-    echo "<pre>";
-    var_dump($_POST);
-    echo "</pre>";
-
-    //if form has been submitted
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-
-        //$_SESSION['condiments'] = $_POST['condiment'];
-
-        //redirect
-        //$f3->reroute('profile');
-
-    }
-
     $view = new Template();
     echo $view->render('views/summary.html');
 
+    session_unset();
+    $_SESSION = [];
     session_destroy();
 
 });

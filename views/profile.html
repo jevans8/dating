@@ -23,39 +23,45 @@
 
     <form action="#" method="POST">
         <div class="row">
-            <div class="col-md-6">
+
+            <div class="col-md-6 mt-3">
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input type="text" class="form-control" id="email" placeholder="my_email@gmail.com">
+                    <input type="text" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
                 </div>
+
                 <!-- State -->
                 <label for="email"><strong>State</strong></label>
-                <select class="custom-select mb-3">
-                    <option selected>-Please Select-</option>
+                <select class="custom-select mb-3" name="state">
+                    <option selected></option>
                     <repeat group="{{ @states }}" value="{{ @state }}">
                         <option value="{{ @state }}">{{ strtoupper(@state) }}</option>
                     </repeat>
                 </select>
+
                 <!-- Gender Interests -->
                 <label><strong>Seeking</strong></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderOptions" id="male" value="male">
+                    <input class="form-check-input" type="radio" name="genderSeeking" id="male" value="male">
                     <label class="form-check-label" for="male">Male</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderOptions" id="female" value="female">
+                    <input class="form-check-input" type="radio" name="genderSeeking" id="female" value="female">
                     <label class="form-check-label" for="female">Female</label>
                 </div>
             </div>
-            <div class="col-md-6">
+
+            <div class="col-md-6 mt-3">
                 <!-- Bio -->
                 <div class="form-group">
                     <label for="bio"><strong>Biography</strong></label>
-                    <textarea class="form-control" id="bio" rows="5"></textarea>
+                    <textarea class="form-control" id="bio" name="bio" rows="5"></textarea>
                 </div>
             </div>
+
         </div>
+
         <!-- Next button -->
         <div class="row">
             <div class="col-12">
@@ -65,6 +71,7 @@
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 

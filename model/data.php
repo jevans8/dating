@@ -14,12 +14,12 @@ function getStates()
 
 function getIndoor()
 {
-    $indoor = array("tv", "puzzles", "movies", "reading", "cooking", "playing cards", "board games", "video games");
+    $indoor = array("tv", "movies", "cooking", "board games", "puzzles", "reading", "playing cards", "video games");
     return $indoor;
 }
 
 function getOutdoor()
 {
-    $outdoor = array("hiking", "walking", "biking", "climbing", "swimming", "collecting");
+    $outdoor = array("hiking", "biking", "swimming", "collecting", "walking", "climbing");
     return $outdoor;
 }
