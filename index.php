@@ -88,8 +88,10 @@ $f3->route('GET|POST /interests', function($f3){
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $_SESSION['indoor'] = $_POST['indoorInterests'];
-        $_SESSION['outdoor'] = $_POST['outdoorInterests'];
+        $interests = array_merge($_POST['indoorInterests'], $_POST['outdoorInterests']);
+        $_SESSION['interests'] = $interests;
+        //$_SESSION['indoor'] = $_POST['indoorInterests'];
+        //$_SESSION['outdoor'] = $_POST['outdoorInterests'];
 
         //redirect
         $f3->reroute('summary');

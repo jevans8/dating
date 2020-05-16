@@ -34,7 +34,11 @@ Profile Summary Page
                 <li class="list-group-item">Email: {{ @SESSION.email }}</li>
                 <li class="list-group-item">State: {{ strtoupper(@SESSION.state) }}</li>
                 <li class="list-group-item">Seeking: {{ ucfirst(@SESSION.seeking) }}</li>
-                <li class="list-group-item">Interests: {{ implode(@SESSION.indoor, " ") }} {{ implode(@SESSION.outdoor, " ") }}</li>
+                <li class="list-group-item">Interests:
+                    <check if="isset( {{ @SESSION.interests }} )">{{ implode(@SESSION.interests, ", ") }}</check>
+                    <!--<check if="isset( {{ @SESSION.indoor }} )">{{ implode(@SESSION.indoor, ", ") }}</check>-->
+                    <!--<check if="isset( {{ @SESSION.outdoor }} )">, {{ implode(@SESSION.outdoor, ", ") }}</check>-->
+                </li>
             </ul>
 
         </div>
