@@ -88,6 +88,21 @@ $f3->route('GET|POST /interests', function($f3){
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+        if(empty($_POST['indoorInterests']))
+        {
+            $_POST['indoorInterests'] = array();
+        }
+
+        if(empty($_POST['outdoorInterests']))
+        {
+            $_POST['outdoorInterests'] = array();
+        }
+
+        //echo "<pre>";
+        //var_dump($_POST['indoorInterests']);
+        //var_dump($_POST['outdoorInterests']);
+        //echo "</pre>";
+
         $interests = array_merge($_POST['indoorInterests'], $_POST['outdoorInterests']);
         $_SESSION['interests'] = $interests;
         //$_SESSION['indoor'] = $_POST['indoorInterests'];
