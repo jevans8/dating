@@ -35,30 +35,42 @@ $f3->route('GET|POST /personal', function($f3){
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //validate first name
-        if(empty($_POST['fname']) || !validName($_POST['fname']))
+        if(empty($_POST['fname']))
         {
-            //set an error variable in the f3 hive
+            $f3->set('errors["fname"]', "Required field");
+        }
+        else if(!validName($_POST['fname']))
+        {
             $f3->set('errors["fname"]', "Invalid first name");
         }
 
         //validate last name
-        if(empty($_POST['lname']) || !validName($_POST['lname']))
+        if(empty($_POST['lname']))
         {
-            //set an error variable in the f3 hive
+            $f3->set('errors["lname"]', "Required field");
+        }
+        else if(!validName($_POST['lname']))
+        {
             $f3->set('errors["lname"]', "Invalid last name");
         }
 
         //validate age
-        if(empty($_POST['age']) || !validAge($_POST['age']))
+        if(empty($_POST['age']))
         {
-            //set an error variable in the f3 hive
+            $f3->set('errors["age"]', "Required field");
+        }
+        else if(!validAge($_POST['age']))
+        {
             $f3->set('errors["age"]', "Invalid age");
         }
 
         //validate phone
-        if(empty($_POST['phone']) || !validPhone($_POST['phone']))
+        if(empty($_POST['phone']))
         {
-            //set an error variable in the f3 hive
+            $f3->set('errors["phone"]', "Required field");
+        }
+        else if(!validPhone($_POST['phone']))
+        {
             $f3->set('errors["phone"]', "Invalid phone number");
         }
 
@@ -100,9 +112,12 @@ $f3->route('GET|POST /profile', function($f3){
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         //validate email
-        if(empty($_POST['email']) || !validEmail($_POST['email']))
+        if(empty($_POST['email']))
         {
-            //set an error variable in the f3 hive
+            $f3->set('errors["email"]', "Required field");
+        }
+        else if(!validEmail($_POST['email']))
+        {
             $f3->set('errors["email"]', "Invalid email address");
         }
 
