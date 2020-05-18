@@ -34,14 +34,46 @@ $f3->route('GET|POST /personal', function($f3){
     //if form has been submitted
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-        $_SESSION['fname'] = $_POST['fname'];
-        $_SESSION['lname'] = $_POST['lname'];
-        $_SESSION['age'] = $_POST['age'];
-        $_SESSION['gender'] = $_POST['gender'];
-        $_SESSION['phone'] = $_POST['phone'];
+        //validate first name
+        if(empty($_POST['fname']) || !validName($_POST['fname']))
+        {
+            //set an error variable in the f3 hive
+            $f3->set('errors["fname"]', "Invalid first name");
+        }
 
-        //redirect
-        $f3->reroute('profile');
+        //validate last name
+        if(empty($_POST['lname']) || !validName($_POST['lname']))
+        {
+            //set an error variable in the f3 hive
+            $f3->set('errors["lname"]', "Invalid last name");
+        }
+
+        //validate age
+        if(empty($_POST['age']) || !validAge($_POST['age']))
+        {
+            //set an error variable in the f3 hive
+            $f3->set('errors["age"]', "Invalid age");
+        }
+
+        //valid data
+        if(empty($f3->get('errors')))
+        {
+            $_SESSION['fname'] = $_POST['fname'];
+            $_SESSION['lname'] = $_POST['lname'];
+            $_SESSION['age'] = $_POST['age'];
+            $_SESSION['gender'] = $_POST['gender'];
+            $_SESSION['phone'] = $_POST['phone'];
+
+            //redirect
+            $f3->reroute('profile');
+        }
+
+        //store variables in f3 hive
+        $f3->set('fname', $_POST['fname']);
+        $f3->set('lname', $_POST['lname']);
+        $f3->set('age', $_POST['age']);
+        $f3->set('gender', $_POST['gender']); //NOT WORKING!!!
+        $f3->set('phone', $_POST['phone']);
 
     }
 
