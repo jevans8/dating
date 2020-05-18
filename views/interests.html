@@ -53,11 +53,15 @@
             </repeat>
         </div>
 
+        <!-- Error message if spoofed -->
+        <check if="isset(@errors['interests'])">
+            <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['interests'] }}</div>
+        </check>
+
         <!-- Next button -->
         <div class="row">
             <div class="col-12">
                 <div class="text-right">
-                    <!--                    <a class="btn btn-primary" href="summary" role="button">Next ></a>-->
                     <button type="submit" class="btn btn-primary">Next ></button>
                 </div>
             </div>

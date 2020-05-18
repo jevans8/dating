@@ -13,26 +13,44 @@ function validAge($age)
 }
 
 //checks to see that a phone number is valid (you can decide what constitutes a “valid” phone number)
-function ValidPhone()
+function validPhone($phone)
 {
-
+    return strlen($phone) >= 10;
 }
 
 //checks to see that an email address is valid
-function validEmail()
+function validEmail($email)
 {
-
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 //checks each selected indoor interest against a list of valid options
-function validIndoor()
+function validIndoor($input)
 {
+    $validInterests = getIndoor();
+    foreach($input as $interest)
+    {
+        if(!in_array($interest, $validInterests))
+        {
+            return false;
+        }
+    }
+    return true;
 
 }
 
 //checks each selected outdoor interest against a list of valid options.
-function validOutdoor()
+function validOutdoor($input)
 {
+    $validInterests = getOutdoor();
+    foreach($input as $interest)
+    {
+        if(!in_array($interest, $validInterests))
+        {
+            return false;
+        }
+    }
+    return true;
 
 }
 

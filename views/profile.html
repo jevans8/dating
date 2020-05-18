@@ -28,7 +28,10 @@
                 <!-- Email -->
                 <div class="form-group">
                     <label for="email"><strong>Email</strong></label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="my_email@gmail.com">
+                    <input type="text" class="form-control" id="email" name="email" value="{{ @email }}" placeholder="my_email@gmail.com">
+                    <check if="isset(@errors['email'])">
+                        <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['email'] }}</div>
+                    </check>
                 </div>
 
                 <!-- State -->
@@ -56,7 +59,7 @@
                 <!-- Bio -->
                 <div class="form-group">
                     <label for="bio"><strong>Biography</strong></label>
-                    <textarea class="form-control" id="bio" name="bio" rows="5"></textarea>
+                    <textarea class="form-control" id="bio" name="bio" rows="5">{{ @bio }}</textarea>
                 </div>
             </div>
 
@@ -66,7 +69,6 @@
         <div class="row">
             <div class="col-12">
                 <div class="text-right">
-                    <!--                    <a class="btn btn-primary" href="interests" role="button">Next ></a>-->
                     <button type="submit" class="btn btn-primary">Next ></button>
                 </div>
             </div>
