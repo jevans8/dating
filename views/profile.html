@@ -21,7 +21,7 @@
     <h1>Profile</h1>
     <hr>
 
-    <form action="#" method="POST">
+    <form action="#" method="POST" class="mb-3">
         <div class="row">
 
             <div class="col-md-6 mt-3">
@@ -37,20 +37,30 @@
                 <!-- State -->
                 <label for="email"><strong>State</strong></label>
                 <select class="custom-select mb-3" name="state">
-                    <option selected></option>
-                    <repeat group="{{ @states }}" value="{{ @state }}">
-                        <option value="{{ @state }}">{{ strtoupper(@state) }}</option>
-                    </repeat>
+                    <check if="isset({{ @selectedState }})">
+                        <true>
+                            <option></option>
+                            <repeat group="{{ @states }}" value="{{ @state }}">
+                                <option value="{{ @state }}" <check if="{{ @selectedState == @state }}">selected</check>>{{ strtoupper(@state) }}</option>
+                            </repeat>
+                        </true>
+                        <false>
+                            <option selected></option>
+                            <repeat group="{{ @states }}" value="{{ @state }}">
+                                <option value="{{ @state }}">{{ strtoupper(@state) }}</option>
+                            </repeat>
+                        </false>
+                    </check>
                 </select>
 
                 <!-- Gender Interests -->
                 <label><strong>Seeking</strong></label><br>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderSeeking" id="male" value="male">
+                    <input class="form-check-input" type="radio" id="male" name="genderSeeking" value="male" <check if="{{ @genderSeeking == 'male' }}">checked='checked'</check>>
                     <label class="form-check-label" for="male">Male</label>
                 </div>
                 <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="genderSeeking" id="female" value="female">
+                    <input class="form-check-input" type="radio" id="female" name="genderSeeking" value="female" <check if="{{ @genderSeeking == 'female' }}">checked='checked'</check>>
                     <label class="form-check-label" for="female">Female</label>
                 </div>
             </div>

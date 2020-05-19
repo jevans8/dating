@@ -41,7 +41,7 @@ $f3->route('GET|POST /personal', function($f3){
         }
         else if(!validName($_POST['fname']))
         {
-            $f3->set('errors["fname"]', "Invalid first name");
+            $f3->set('errors["fname"]', "Please enter a valid name");
         }
 
         //validate last name
@@ -51,7 +51,7 @@ $f3->route('GET|POST /personal', function($f3){
         }
         else if(!validName($_POST['lname']))
         {
-            $f3->set('errors["lname"]', "Invalid last name");
+            $f3->set('errors["lname"]', "Please enter a valid name");
         }
 
         //validate age
@@ -61,7 +61,7 @@ $f3->route('GET|POST /personal', function($f3){
         }
         else if(!validAge($_POST['age']))
         {
-            $f3->set('errors["age"]', "Invalid age");
+            $f3->set('errors["age"]', "Please enter a valid age");
         }
 
         //validate phone
@@ -71,7 +71,7 @@ $f3->route('GET|POST /personal', function($f3){
         }
         else if(!validPhone($_POST['phone']))
         {
-            $f3->set('errors["phone"]', "Invalid phone number");
+            $f3->set('errors["phone"]', "Please enter a valid phone number");
         }
 
         //if valid data
@@ -87,11 +87,11 @@ $f3->route('GET|POST /personal', function($f3){
             $f3->reroute('profile');
         }
 
-        //store variables in f3 hive
+        //store variables in f3 hive (to make form sticky)
         $f3->set('fname', $_POST['fname']);
         $f3->set('lname', $_POST['lname']);
         $f3->set('age', $_POST['age']);
-        $f3->set('selectedGender', $_POST['gender']); //NOT WORKING!!!
+        $f3->set('selectedGender', $_POST['gender']);
         $f3->set('phone', $_POST['phone']);
 
     }
@@ -118,7 +118,7 @@ $f3->route('GET|POST /profile', function($f3){
         }
         else if(!validEmail($_POST['email']))
         {
-            $f3->set('errors["email"]', "Invalid email address");
+            $f3->set('errors["email"]', "Please enter a valid email address");
         }
 
         //if valid data
@@ -135,8 +135,8 @@ $f3->route('GET|POST /profile', function($f3){
 
         //store variables in f3 hive
         $f3->set('email', $_POST['email']);
-        //$f3->set('state', $_POST['state']);
-        //$f3->set('seeking', $_POST['seeking']);
+        $f3->set('selectedState', $_POST['state']);
+        $f3->set('genderSeeking', $_POST['genderSeeking']);
         $f3->set('bio', $_POST['bio']);
 
     }
