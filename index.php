@@ -8,12 +8,12 @@
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-//Start a session
-session_start();
-
 //Require the autoload file
 require_once('vendor/autoload.php');
 require_once('model/data.php');
+
+//Start a session (AFTER the autoload)
+session_start();
 
 //Instantiate the framework (Base class)
 $f3 = Base::instance(); //Class::method()
@@ -82,6 +82,7 @@ $f3->route('GET|POST /personal', function($f3){
             $_SESSION['age'] = $_POST['age'];
             $_SESSION['gender'] = $_POST['gender'];
             $_SESSION['phone'] = $_POST['phone'];
+            $_SESSION['premium'] = $_POST['premium'];
 
             //redirect
             $f3->reroute('profile');
@@ -93,6 +94,7 @@ $f3->route('GET|POST /personal', function($f3){
         $f3->set('age', $_POST['age']);
         $f3->set('selectedGender', $_POST['gender']);
         $f3->set('phone', $_POST['phone']);
+        $f3->set('premium', $_POST['premium']);
 
     }
 
@@ -187,7 +189,7 @@ $f3->route('GET|POST /interests', function($f3){
             $f3->reroute('summary');
         }
 
-        //don't store variables in f3 hive because we don't want the form to be sticky
+        //don't store interests variables in f3 hive because we don't want the interest form to be sticky
         //if form is spoofed, we want all the values to reset
 
     }

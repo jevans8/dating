@@ -25,6 +25,7 @@
         <div class="row">
             <!-- Left col -->
             <div class="col-md-8">
+
                 <!-- First name -->
                 <div class="form-group">
                     <label for="fname"><strong>First Name</strong></label>
@@ -33,6 +34,7 @@
                         <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['fname'] }}</div>
                     </check>
                 </div>
+
                 <!-- Last name -->
                 <div class="form-group">
                     <label for="lname"><strong>Last Name</strong></label>
@@ -41,6 +43,7 @@
                         <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['lname'] }}</div>
                     </check>
                 </div>
+
                 <!-- Age -->
                 <div class="form-group">
                     <label for="age"><strong>Age</strong></label>
@@ -49,6 +52,7 @@
                         <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['age'] }}</div>
                     </check>
                 </div>
+
                 <!-- Gender -->
                 <label><strong>Gender</strong></label><br>
                 <div class="form-check form-check-inline">
@@ -59,6 +63,7 @@
                     <input class="form-check-input" type="radio" id="female" name="gender" value="female" <check if="{{ @selectedGender == 'female' }}">checked='checked'</check>>
                     <label class="form-check-label" for="female">Female</label>
                 </div>
+
                 <!-- Phone -->
                 <div class="form-group mt-3">
                     <label for="phone"><strong>Phone Number</strong></label>
@@ -67,9 +72,19 @@
                         <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @errors['phone'] }}</div>
                     </check>
                 </div>
+
+                <!-- Premium membership -->
+                <label class="form-check-label" for="premium"><strong>Premium Membership</strong></label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="premium" name="premium" <check if="isset(@premium)">checked='checked'</check>>
+                    <label class="form-check-label" for="premium">Sign me up for a Premium Account!</label>
+                </div>
+
             </div>
+
             <!-- Right col -->
             <div class="col-md-4">
+
                 <!-- Disclaimer message -->
                 <div class="bg-light border border-secondary rounded p-3 text-center">
                     <strong>Note:</strong> All information entered is protected by our <a href="">privacy policy</a>.
@@ -77,11 +92,11 @@
                 </div>
             </div>
         </div>
+
         <!-- Next button -->
         <div class="row">
             <div class="col-12">
                 <div class="text-right m-3">
-                    <!--                            <a class="btn btn-primary" href="profile" role="button">Next ></a>-->
                     <button type="submit" class="btn btn-primary">Next ></button>
                 </div>
             </div>
