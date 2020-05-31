@@ -1,7 +1,7 @@
 <?php
 
 //Julia Evans
-//4/21/2020
+//6/3/2020
 //F3 routing file (the controller)
 
 //Turn on error reporting
@@ -10,7 +10,7 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
-require_once('model/data.php'); //why is this necessary if it's in composer?????
+//require_once('model/data.php'); //why is this necessary if it's in composer?????
 require_once('classes/controller.php'); //why is this necessary if it's in composer?????
 require_once('classes/validator.php'); //why is this necessary if it's in composer?????
 

@@ -2,10 +2,14 @@
 
 /**
  * Class Controller
+ * Contains the routing methods for the dating app
+ * @author Julia Evans
+ * @version 1.0
  */
 class Controller
 {
     private $_f3; //router
+    private $_member; //member object
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -79,12 +83,31 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                $_SESSION['fname'] = $_POST['fname'];
-                $_SESSION['lname'] = $_POST['lname'];
-                $_SESSION['age'] = $_POST['age'];
-                $_SESSION['gender'] = $_POST['gender'];
-                $_SESSION['phone'] = $_POST['phone'];
+                if($_POST['premium'])
+                {
+                    $_member = new PremiumMember();
+                }
+                else
+                {
+                    $_member = new Member();
+                }
+
+                //set object variables
+                $_member->setFName($_POST['fname']);
+                $_member->setLName($_POST['lname']);
+                $_member->setAge($_POST['age']);
+                $_member->setGender($_POST['gender']);
+                $_member->setPhone($_POST['phone']);
+
+                //$_SESSION['fname'] = $_POST['fname'];
+                //$_SESSION['lname'] = $_POST['lname'];
+                //$_SESSION['age'] = $_POST['age'];
+                //$_SESSION['gender'] = $_POST['gender'];
+                //$_SESSION['phone'] = $_POST['phone'];
                 $_SESSION['premium'] = $_POST['premium'];
+
+                //save object in session
+                $_SESSION['member'] = $_member;
 
                 //redirect
                 $this->_f3->reroute('profile');
@@ -110,6 +133,7 @@ class Controller
     public function profile()
     {
         global $validator;
+        //global $_member;
 
         $states = $validator->getStates();
         $this->_f3->set('states', $states); //put into f3 hive
@@ -130,10 +154,15 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                $_SESSION['email'] = $_POST['email'];
-                $_SESSION['state'] = $_POST['state'];
-                $_SESSION['seeking'] = $_POST['genderSeeking'];
-                $_SESSION['bio'] = $_POST['bio'];
+                $_SESSION['member']->setEmail($_POST['email']);
+                $_SESSION['member']->setState($_POST['state']);
+                $_SESSION['member']->setSeeking($_POST['genderSeeking']);
+                $_SESSION['member']->setBio($_POST['bio']);
+
+                //$_SESSION['email'] = $_POST['email'];
+                //$_SESSION['state'] = $_POST['state'];
+                //$_SESSION['seeking'] = $_POST['genderSeeking'];
+                //$_SESSION['bio'] = $_POST['bio'];
 
                 //redirect to proper page based on membership status
                 if($_SESSION['premium'])
@@ -165,6 +194,7 @@ class Controller
     public function interests()
     {
         global $validator;
+        global $_member;
 
         $indoorInterests = $validator->getIndoor();
         $this->_f3->set('indoorInterests', $indoorInterests); //put into f3 hive
@@ -195,8 +225,11 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
+                //$_member->setIndoorInterests($_POST['indoorInterests']);
+                //$_member->setOutdoorInterests($_POST['outdoorInterests']);
                 $interests = array_merge($_POST['indoorInterests'], $_POST['outdoorInterests']);
-                $_SESSION['interests'] = $interests;
+                $_SESSION['member']->setInterests($interests);
+                //$_SESSION['interests'] = $interests;
 
                 //redirect
                 $this->_f3->reroute('summary');
@@ -220,7 +253,7 @@ class Controller
         echo $view->render('views/summary.html');
 
         session_unset();
-        $_SESSION = [];
+        $_SESSION = array();
         session_destroy();
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

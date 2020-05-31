@@ -5,13 +5,14 @@ class PremiumMember extends Member
     //instance variables
     private $_indoorInterests;
     private $_outdoorInterests;
+    private $_interests;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Default constructor
      * @param $indoorInterests indoor interests
      */
-    public function __construct($indoorInterests, $outdoorInterests)
+    public function __construct($indoorInterests = '', $outdoorInterests = '')
     {
         $this->_indoorInterests = $indoorInterests;
         $this->_outdoorInterests = $outdoorInterests;
@@ -47,6 +48,14 @@ class PremiumMember extends Member
     public function setOutdoorInterests($outdoorInterests)
     {
         $this->_outdoorInterests = $outdoorInterests;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * @param $interests interests
+     */
+    public function setInterests($interests)
+    {
+        $this->_interests = $interests;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
