@@ -111,7 +111,7 @@ class Controller
     {
         global $validator;
 
-        $states = getStates();
+        $states = $validator->getStates();
         $this->_f3->set('states', $states); //put into f3 hive
 
         //if form has been submitted
@@ -166,10 +166,10 @@ class Controller
     {
         global $validator;
 
-        $indoorInterests = getIndoor();
+        $indoorInterests = $validator->getIndoor();
         $this->_f3->set('indoorInterests', $indoorInterests); //put into f3 hive
 
-        $outdoorInterests = getOutdoor();
+        $outdoorInterests = $validator->getOutdoor();
         $this->_f3->set('outdoorInterests', $outdoorInterests); //put into f3 hive
 
         //if form has been submitted

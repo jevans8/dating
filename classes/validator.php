@@ -55,7 +55,9 @@ class Validator
      */
     function validIndoor($input)
     {
-        $validInterests = getIndoor();
+        global $validator;
+
+        $validInterests = $validator->getIndoor();
         foreach($input as $interest)
         {
             if(!in_array($interest, $validInterests))
@@ -73,7 +75,9 @@ class Validator
      */
     function validOutdoor($input)
     {
-        $validInterests = getOutdoor();
+        global $validator;
+
+        $validInterests = $validator->getOutdoor();
         foreach($input as $interest)
         {
             if(!in_array($interest, $validInterests))

@@ -12,6 +12,7 @@ error_reporting(E_ALL);
 require_once('vendor/autoload.php');
 require_once('model/data.php'); //why is this necessary if it's in composer?????
 require_once('classes/controller.php'); //why is this necessary if it's in composer?????
+require_once('classes/validator.php'); //why is this necessary if it's in composer?????
 
 //Start a session (AFTER the autoload)
 session_start();
