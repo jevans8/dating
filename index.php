@@ -131,8 +131,16 @@ $f3->route('GET|POST /profile', function($f3){
             $_SESSION['seeking'] = $_POST['genderSeeking'];
             $_SESSION['bio'] = $_POST['bio'];
 
-            //redirect
-            $f3->reroute('interests');
+            //redirect to proper page based on membership status
+            if($_SESSION['premium'])
+            {
+                $f3->reroute('interests');
+            }
+            else
+            {
+                $f3->reroute('summary');
+            }
+
         }
 
         //store variables in f3 hive
