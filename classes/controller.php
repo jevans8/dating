@@ -31,6 +31,8 @@ class Controller
      */
     public function personal()
     {
+        global $validator;
+
         //if form has been submitted
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -39,7 +41,7 @@ class Controller
             {
                 $this->_f3->set('errors["fname"]', "Required field");
             }
-            else if(!validName($_POST['fname']))
+            else if(!$validator->validName($_POST['fname']))
             {
                 $this->_f3->set('errors["fname"]', "Please enter a valid name");
             }
@@ -49,7 +51,7 @@ class Controller
             {
                 $this->_f3->set('errors["lname"]', "Required field");
             }
-            else if(!validName($_POST['lname']))
+            else if(!$validator->validName($_POST['lname']))
             {
                 $this->_f3->set('errors["lname"]', "Please enter a valid name");
             }
@@ -59,7 +61,7 @@ class Controller
             {
                 $this->_f3->set('errors["age"]', "Required field");
             }
-            else if(!validAge($_POST['age']))
+            else if(!$validator->validAge($_POST['age']))
             {
                 $this->_f3->set('errors["age"]', "Please enter a valid age");
             }
@@ -69,7 +71,7 @@ class Controller
             {
                 $this->_f3->set('errors["phone"]', "Required field");
             }
-            else if(!validPhone($_POST['phone']))
+            else if(!$validator->validPhone($_POST['phone']))
             {
                 $this->_f3->set('errors["phone"]', "Please enter a valid phone number");
             }
@@ -107,6 +109,8 @@ class Controller
      */
     public function profile()
     {
+        global $validator;
+
         $states = getStates();
         $this->_f3->set('states', $states); //put into f3 hive
 
@@ -118,7 +122,7 @@ class Controller
             {
                 $this->_f3->set('errors["email"]', "Required field");
             }
-            else if(!validEmail($_POST['email']))
+            else if(!$validator->validEmail($_POST['email']))
             {
                 $this->_f3->set('errors["email"]', "Please enter a valid email address");
             }
@@ -160,6 +164,8 @@ class Controller
      */
     public function interests()
     {
+        global $validator;
+
         $indoorInterests = getIndoor();
         $this->_f3->set('indoorInterests', $indoorInterests); //put into f3 hive
 
@@ -180,11 +186,10 @@ class Controller
             }
 
             //validate interests
-            if(!validIndoor($_POST['indoorInterests']) || !validOutdoor($_POST['outdoorInterests']))
+            if(!$validator->validIndoor($_POST['indoorInterests']) || !$validator->validOutdoor($_POST['outdoorInterests']))
             {
                 //set an error variable in the f3 hive
                 $this->_f3->set('errors["interests"]', "Invalid interests");
-
             }
 
             //if valid data

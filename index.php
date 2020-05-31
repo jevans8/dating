@@ -10,13 +10,16 @@ error_reporting(E_ALL);
 
 //Require the autoload file
 require_once('vendor/autoload.php');
-require_once('model/data.php');
+require_once('model/data.php'); //why is this necessary if it's in composer?????
+require_once('classes/controller.php'); //why is this necessary if it's in composer?????
 
 //Start a session (AFTER the autoload)
 session_start();
 
 //Instantiate the framework (Base class)
 $f3 = Base::instance(); //Class::method()
+$controller = new Controller($f3); //controller object
+$validator = new Validator(); //validation object
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //Default (home) route
