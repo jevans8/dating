@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Member
+ * Contains the methods for all member objects
+ * @author Julia Evans
+ * @version 1.0
+ */
 class Member
 {
     //instance variables
@@ -40,6 +46,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for first name
      * @return string first name
      */
     public function getFName()
@@ -48,7 +55,8 @@ class Member
     }
 
     /**
-     * @param $fname first name
+     * setter for first name
+     * @param $fname
      */
     public function setFName($fname)
     {
@@ -56,6 +64,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for last name
      * @return string last name
      */
     public function getLName()
@@ -64,7 +73,8 @@ class Member
     }
 
     /**
-     * @param $lname last name
+     * setter for last name
+     * @param $lname
      */
     public function setLName($lname)
     {
@@ -72,6 +82,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for age
      * @return number age
      */
     public function getAge()
@@ -80,7 +91,8 @@ class Member
     }
 
     /**
-     * @param $age age
+     * setter for age
+     * @param $age
      */
     public function setAge($age)
     {
@@ -88,6 +100,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for gender
      * @return string gender
      */
     public function getGender()
@@ -96,7 +109,8 @@ class Member
     }
 
     /**
-     * @param $gender gender
+     * setter for gender
+     * @param $gender
      */
     public function setGender($gender)
     {
@@ -104,6 +118,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for phone number
      * @return string phone
      */
     public function getPhone()
@@ -112,7 +127,8 @@ class Member
     }
 
     /**
-     * @param $phone phone
+     * setter for phone number
+     * @param $phone
      */
     public function setPhone($phone)
     {
@@ -120,6 +136,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for email address
      * @return string email
      */
     public function getEmail()
@@ -128,7 +145,8 @@ class Member
     }
 
     /**
-     * @param $email email
+     * setter for email address
+     * @param $email
      */
     public function setEmail($email)
     {
@@ -136,6 +154,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for state
      * @return string state
      */
     public function getState()
@@ -144,7 +163,8 @@ class Member
     }
 
     /**
-     * @param $state state
+     * setter for state
+     * @param $state
      */
     public function setState($state)
     {
@@ -152,6 +172,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for seeking
      * @return string seeking
      */
     public function getSeeking()
@@ -160,7 +181,8 @@ class Member
     }
 
     /**
-     * @param $seeking seeking
+     * setter for seeking
+     * @param $seeking
      */
     public function setSeeking($seeking)
     {
@@ -168,6 +190,7 @@ class Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for bio
      * @return string bio
      */
     public function getBio()
@@ -176,7 +199,8 @@ class Member
     }
 
     /**
-     * @param $bio bio
+     * setter for bio
+     * @param $bio
      */
     public function setBio($bio)
     {

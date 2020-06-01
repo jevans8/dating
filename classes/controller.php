@@ -12,7 +12,7 @@ class Controller
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * Controller constructor.
+     * Controller object constructor.
      * @param $_f3
      */
     public function __construct($_f3)
@@ -97,13 +97,6 @@ class Controller
                 $_member->setAge($_POST['age']);
                 $_member->setGender($_POST['gender']);
                 $_member->setPhone($_POST['phone']);
-
-                //$_SESSION['fname'] = $_POST['fname'];
-                //$_SESSION['lname'] = $_POST['lname'];
-                //$_SESSION['age'] = $_POST['age'];
-                //$_SESSION['gender'] = $_POST['gender'];
-                //$_SESSION['phone'] = $_POST['phone'];
-                //$_SESSION['premium'] = $_POST['premium'];
 
                 //save member object in session
                 $_SESSION['member'] = $_member;
@@ -218,11 +211,10 @@ class Controller
             //if valid data
             if(empty($this->_f3->get('errors')))
             {
-                //$_member->setIndoorInterests($_POST['indoorInterests']);
-                //$_member->setOutdoorInterests($_POST['outdoorInterests']);
-                $interests = array_merge($_POST['indoorInterests'], $_POST['outdoorInterests']);
+                $_SESSION['member']->setIndoorInterests($_POST['indoorInterests']);
+                $_SESSION['member']->setOutdoorInterests($_POST['outdoorInterests']);
+                $interests = array_merge($_SESSION['member']->getIndoorInterests(), $_SESSION['member']->getOutdoorInterests());
                 $_SESSION['member']->setInterests($interests);
-                //$_SESSION['interests'] = $interests;
 
                 //redirect
                 $this->_f3->reroute('summary');

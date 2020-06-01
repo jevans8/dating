@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class PremiumMember
+ * Contains the methods for PremiumMember objects and inherits from Member class
+ * @author Julia Evans
+ * @version 1.0
+ */
 class PremiumMember extends Member
 {
     //instance variables
@@ -10,7 +16,8 @@ class PremiumMember extends Member
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Default constructor
-     * @param $indoorInterests //indoor interests
+     * @param $indoorInterests
+     * @param $outdoorInterests
      */
     public function __construct($indoorInterests = array(), $outdoorInterests = array())
     {
@@ -19,6 +26,7 @@ class PremiumMember extends Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for indoor interests
      * @return array indoor interests
      */
     public function getIndoorInterests()
@@ -27,7 +35,8 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param $indoorInterests //indoor interests
+     * setter for indoor interests
+     * @param $indoorInterests
      */
     public function setIndoorInterests($indoorInterests)
     {
@@ -35,6 +44,7 @@ class PremiumMember extends Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for outdoor interests
      * @return array outdoor interests
      */
     public function getOutdoorInterests()
@@ -43,7 +53,8 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param $outdoorInterests //outdoor interests
+     * setter for outdoor interests
+     * @param $outdoorInterests
      */
     public function setOutdoorInterests($outdoorInterests)
     {
@@ -51,6 +62,7 @@ class PremiumMember extends Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
+     * getter for all interests
      * @return array all interests
      */
     public function getInterests()
@@ -59,7 +71,8 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param $interests //all interests
+     * setter for all interests
+     * @param $interests
      */
     public function setInterests($interests)
     {
