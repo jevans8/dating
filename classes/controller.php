@@ -9,7 +9,6 @@
 class Controller
 {
     private $_f3; //router
-    private $_member; //member object
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -104,9 +103,9 @@ class Controller
                 //$_SESSION['age'] = $_POST['age'];
                 //$_SESSION['gender'] = $_POST['gender'];
                 //$_SESSION['phone'] = $_POST['phone'];
-                $_SESSION['premium'] = $_POST['premium'];
+                //$_SESSION['premium'] = $_POST['premium'];
 
-                //save object in session
+                //save member object in session
                 $_SESSION['member'] = $_member;
 
                 //redirect
@@ -133,7 +132,6 @@ class Controller
     public function profile()
     {
         global $validator;
-        //global $_member;
 
         $states = $validator->getStates();
         $this->_f3->set('states', $states); //put into f3 hive
@@ -159,13 +157,9 @@ class Controller
                 $_SESSION['member']->setSeeking($_POST['genderSeeking']);
                 $_SESSION['member']->setBio($_POST['bio']);
 
-                //$_SESSION['email'] = $_POST['email'];
-                //$_SESSION['state'] = $_POST['state'];
-                //$_SESSION['seeking'] = $_POST['genderSeeking'];
-                //$_SESSION['bio'] = $_POST['bio'];
-
                 //redirect to proper page based on membership status
-                if($_SESSION['premium'])
+                //if($_SESSION['premium'])
+                if($_SESSION['member'] instanceof PremiumMember)
                 {
                     $this->_f3->reroute('interests');
                 }
@@ -194,11 +188,10 @@ class Controller
     public function interests()
     {
         global $validator;
-        global $_member;
 
+        //generate check boxes
         $indoorInterests = $validator->getIndoor();
         $this->_f3->set('indoorInterests', $indoorInterests); //put into f3 hive
-
         $outdoorInterests = $validator->getOutdoor();
         $this->_f3->set('outdoorInterests', $outdoorInterests); //put into f3 hive
 

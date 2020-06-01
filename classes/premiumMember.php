@@ -10,9 +10,9 @@ class PremiumMember extends Member
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
      * Default constructor
-     * @param $indoorInterests indoor interests
+     * @param $indoorInterests //indoor interests
      */
-    public function __construct($indoorInterests = '', $outdoorInterests = '')
+    public function __construct($indoorInterests = array(), $outdoorInterests = array())
     {
         $this->_indoorInterests = $indoorInterests;
         $this->_outdoorInterests = $outdoorInterests;
@@ -27,7 +27,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param $indoorInterests indoor interests
+     * @param $indoorInterests //indoor interests
      */
     public function setIndoorInterests($indoorInterests)
     {
@@ -43,7 +43,7 @@ class PremiumMember extends Member
     }
 
     /**
-     * @param $outdoorInterests outdoor interests
+     * @param $outdoorInterests //outdoor interests
      */
     public function setOutdoorInterests($outdoorInterests)
     {
@@ -51,7 +51,15 @@ class PremiumMember extends Member
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
-     * @param $interests interests
+     * @return array all interests
+     */
+    public function getInterests()
+    {
+        return $this->_interests;
+    }
+
+    /**
+     * @param $interests //all interests
      */
     public function setInterests($interests)
     {
