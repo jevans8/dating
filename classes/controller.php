@@ -151,7 +151,6 @@ class Controller
                 $_SESSION['member']->setBio($_POST['bio']);
 
                 //redirect to proper page based on membership status
-                //if($_SESSION['premium'])
                 if($_SESSION['member'] instanceof PremiumMember)
                 {
                     $this->_f3->reroute('interests');
