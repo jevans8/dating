@@ -1,0 +1,53 @@
+<!--
+   Julia Evans
+   5/13/2020
+   Image uploads Page
+   -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <include href="includes/head.html"></include>
+    <title>Chasing Tail &#128062; Upload Image</title>
+</head>
+
+<body>
+
+<!--Nav bar-->
+<include href="includes/nav.html"></include>
+
+<!--Page content-->
+<div class="container mt-5">
+    <h1>Upload Profile Image</h1>
+    <hr>
+
+    <form action="#" method="post" enctype="multipart/form-data" class="mb-3">
+
+        <check if="isset(@uploads['success'])">
+            <div class="small my-1 py-1 alert alert-success" role="alert">{{ @uploads['success'] }}</div>
+            <img src="{{ @image }}" alt="profile image">
+        </check>
+
+        <check if="isset(@uploads['failure'])">
+            <div class="small my-1 py-1 alert alert-danger" role="alert">{{ @uploads['failure'] }}</div>
+        </check>
+
+        <p></p>
+        <input type="file" name="fileToUpload">
+        <input type="submit" value="Upload File" name="submit">
+
+        <!-- Next button -->
+        <div class="row">
+            <div class="col-12">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-primary" name="nextBtn">Next ></button>
+                </div>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

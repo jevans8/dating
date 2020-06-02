@@ -47,7 +47,14 @@ Profile Summary Page
 
             <!-- Image -->
             <div class="text-center m-3">
-                <img class="img-fluid " src="/328/dating/images/profile.png" alt="profile">
+                <check if="@SESSION.member->getImage()">
+                    <true>
+                        <img src="{{ @SESSION.member->getImage() }}" alt="profile image" class="img-fluid rounded">
+                    </true>
+                    <false>
+                        <img class="img-fluid " src="/328/dating/images/profile.png" alt="profile image">
+                    </false>
+                </check>
             </div>
 
             <!-- Bio -->

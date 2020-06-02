@@ -153,7 +153,8 @@ class Controller
                 //redirect to proper page based on membership status
                 if($_SESSION['member'] instanceof PremiumMember)
                 {
-                    $this->_f3->reroute('interests');
+                    //$this->_f3->reroute('interests');
+                    $this->_f3->reroute('upload');
                 }
                 else
                 {
@@ -172,6 +173,52 @@ class Controller
 
         $view = new Template();
         echo $view->render('views/profile.html');
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * Process image upload route
+     */
+    public function upload()
+    {
+        //if upload file button on form has been submitted
+        if (isset($_FILES['fileToUpload']))
+        {
+            $dirName = "uploads/";
+            $file = $_FILES['fileToUpload'];
+
+            //Define valid file types
+            $validTypes = array('image/jpeg', 'image/jpg', 'image/png');
+
+            //If good file type
+            if(in_array($file['type'], $validTypes))
+            {
+                //Move file to uploads directory
+                move_uploaded_file($file['tmp_name'], $dirName . $file['name']);
+
+                //Save image file path
+                $filePath = $dirName . $file['name'];
+                $this->_f3->set("image", "$filePath");
+                $_SESSION['member']->setImage($filePath);
+
+                //Success message
+                $this->_f3->set("uploads['success]", "Uploaded {$file['name']} successfully!");
+            }
+            else
+            {
+                //Error message
+                $this->_f3->set("uploads['failure']", "Invalid file type. Allowed types: jpeg, jpg, png");
+            }
+
+        }
+
+        //if Next button on form has been submitted
+        if(isset($_POST['nextBtn']))
+        {
+            $this->_f3->reroute('interests');
+        }
+
+        $view = new Template();
+        echo $view->render('views/upload.html');
     }
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**

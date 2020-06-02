@@ -12,6 +12,7 @@ class PremiumMember extends Member
     private $_indoorInterests;
     private $_outdoorInterests;
     private $_interests;
+    private $_profileImage;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /**
@@ -77,6 +78,24 @@ class PremiumMember extends Member
     public function setInterests($interests)
     {
         $this->_interests = $interests;
+    }
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /**
+     * getter for profile image
+     * @return String file path name
+     */
+    public function getImage()
+    {
+        return $this->_profileImage;
+    }
+
+    /**
+     * setter for profile image
+     * @param $filePath
+     */
+    public function setImage($filePath)
+    {
+        $this->_profileImage = $filePath;
     }
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
