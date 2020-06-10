@@ -47,7 +47,7 @@ Profile Summary Page
 
             <!-- Image -->
             <div class="text-center m-3">
-                <check if="@SESSION.member->getImage()">
+                <check if="@SESSION.member instanceof PremiumMember">
                     <true>
                         <img src="{{ @SESSION.member->getImage() }}" alt="profile image" class="img-fluid rounded">
                     </true>

@@ -180,6 +180,8 @@ class Controller
      */
     public function upload()
     {
+        $_SESSION['member']->setImage('/328/dating/images/profile.png');
+
         //if upload file button on form has been submitted
         if (isset($_FILES['fileToUpload']))
         {
